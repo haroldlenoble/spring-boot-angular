@@ -62,7 +62,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>copy Vue.js frontend content</id>
+                        <id>copy Angular cli frontend content</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -72,11 +72,9 @@
                             <overwrite>true</overwrite>
                             <resources>
                                 <resource>
-                                    <directory>${project.parent.basedir}/frontend/target/dist</directory>
+                                    <directory>${project.parent.basedir}/frontend/dist/frontend</directory>
                                     <includes>
-                                        <include>static/</include>
-                                        <include>index.html</include>
-                                        <include>favicon.ico</include>
+                                        <include>**</include>
                                     </includes>
                                 </resource>
                             </resources>

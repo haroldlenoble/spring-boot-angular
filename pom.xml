@@ -23,8 +23,8 @@
         <build-plugin.coveralls.version>4.3.0</build-plugin.coveralls.version>
     </properties>
     <modules>
-        <module>backend</module>
         <module>frontend</module>
+        <module>backend</module>
     </modules>
 
     <build>
