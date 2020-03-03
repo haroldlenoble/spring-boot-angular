@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <button class="btn btn-success" (click)="getUser()">Reload</button>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col" *ngFor="let name of headers">{{name}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td scope="row" >{{user.id}}</td>
+        <td scope="row" >{{user.firstName}}</td>
+        <td scope="row" >{{user.lastName}}</td>
+        <td scope="row" >{{user.email}}</td>
+        <td scope="row" >{{user.phone}}</td>
+        <td scope="row" >{{user.country}}</td>
+        <td scope="row" >
+          <button class="btn btn-primary">Update</button>
+        </td>
+        <td scope="row" >
+          <button class="btn btn-warning" (click)="deleteUser(user.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="col">
+      <button class="btn btn-success">Add</button>
+    </div>
+  </div>
+</div>
