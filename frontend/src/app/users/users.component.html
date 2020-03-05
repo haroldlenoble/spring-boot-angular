@@ -1,9 +1,6 @@
 <div class="container">
   <h2>User's List</h2>
   <div class="row">
-    <button class="btn btn-success" (click)="getUser()">Reload</button>
-  </div>
-  <div class="row">
     <table class="table">
       <thead>
       <tr>
@@ -19,7 +16,7 @@
         <td scope="row" >{{user.phone}}</td>
         <td scope="row" >{{user.country}}</td>
         <td scope="row" >
-          <button class="btn btn-primary">Update</button>
+          <button class="btn btn-primary" (click)="initUser(user.id)">Update</button>
         </td>
         <td scope="row" >
           <button class="btn btn-warning" (click)="deleteUser(user.id)">Delete</button>
@@ -28,7 +25,7 @@
       </tbody>
     </table>
     <div class="col">
-      <button class="btn btn-success">Add</button>
+      <button class="btn btn-success" (click)="initUser(-1)">Add</button>
     </div>
   </div>
 </div>

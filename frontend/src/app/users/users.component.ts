@@ -1,16 +1,9 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-
-
-class User {
-  public id: number;
-  public firstName: string;
-  public lastName: string;
-  public email: string;
-  public phone: number;
-  public country: string;
-}
+import * as axios from 'axios';
+import {Router} from '@angular/router';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-users',
@@ -24,24 +17,27 @@ export class UsersComponent implements OnInit {
   headers = ['id', 'Firstname', 'LastName', 'Email', 'Phone', 'Country', 'Update', 'Delete'];
   users: User[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  getUser() {
-    return this.http
-      .get<User[]>('http://localhost:8080/users').subscribe(data => {
-        this.users = data._embedded.users;
-      });
+  getUsers() {
+    return axios.default.get('http://localhost:8080/users').then(data => {
+      this.users = data.data._embedded.users;
+      console.log(this.users);
+    });
   }
   deleteUser(id) {
     if (confirm('Are you sure')) {
-      return this.http.delete('http://localhost:8080/users/' + id).subscribe(() => this.getUser());
+      return this.http.delete('http://localhost:8080/users/' + id).subscribe(() => this.getUsers());
     } else {
       return null;
     }
   }
+  initUser(id) {
+    this.router.navigate(['/user/' + id]).then(r => '/');
+  }
 
   ngOnInit() {
-    this.getUser();
+    this.getUsers();
   }
 
 }

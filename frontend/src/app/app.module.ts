@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import {RouterModule, Routes} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 
 const appRoutes: Routes = [
   { path: '', component: UsersComponent},
-  { path: 'user', component: UserViewComponent}
+  { path: 'user/:id', component: UserViewComponent}
 ];
 
 @NgModule({
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
