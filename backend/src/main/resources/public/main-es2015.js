@@ -194,7 +194,7 @@ class UserViewComponent {
     }
     getUser(id) {
         return this.http
-            .get('http://localhost:8080/users/' + id).subscribe(data => {
+            .get('/users/' + id).subscribe(data => {
             this.user.id = data.id;
             this.user.email = data.email;
             this.user.firstName = data.firstName;
@@ -206,11 +206,11 @@ class UserViewComponent {
     }
     createUser(user) {
         return this.http
-            .post('http://localhost:8080/users', user).subscribe(() => this.route.navigate(['/']));
+            .post('/users', user).subscribe(() => this.route.navigate(['/']));
     }
     updateUser(user) {
         return this.http
-            .put('http://localhost:8080/users/' + user.id, user).subscribe(() => this.route.navigate(['/']));
+            .put('/users/' + user.id, user).subscribe(() => this.route.navigate(['/']));
     }
     ngOnInit() {
         this.id = +this.router.snapshot.paramMap.get('id');
@@ -417,14 +417,14 @@ class UsersComponent {
         this.headers = ['id', 'Firstname', 'LastName', 'Email', 'Phone', 'Country', 'Update', 'Delete'];
     }
     getUsers() {
-        return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8080/users').then(data => {
+        return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/users').then(data => {
             this.users = data.data._embedded.users;
             console.log(this.users);
         });
     }
     deleteUser(id) {
         if (confirm('Are you sure')) {
-            return this.http.delete('http://localhost:8080/users/' + id).subscribe(() => this.getUsers());
+            return this.http.delete('/users/' + id).subscribe(() => this.getUsers());
         }
         else {
             return null;

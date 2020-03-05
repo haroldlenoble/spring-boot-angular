@@ -375,7 +375,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function getUser(id) {
           var _this = this;
 
-          return this.http.get('http://localhost:8080/users/' + id).subscribe(function (data) {
+          return this.http.get('/users/' + id).subscribe(function (data) {
             _this.user.id = data.id;
             _this.user.email = data.email;
             _this.user.firstName = data.firstName;
@@ -390,7 +390,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function createUser(user) {
           var _this2 = this;
 
-          return this.http.post('http://localhost:8080/users', user).subscribe(function () {
+          return this.http.post('/users', user).subscribe(function () {
             return _this2.route.navigate(['/']);
           });
         }
@@ -399,7 +399,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function updateUser(user) {
           var _this3 = this;
 
-          return this.http.put('http://localhost:8080/users/' + user.id, user).subscribe(function () {
+          return this.http.put('/users/' + user.id, user).subscribe(function () {
             return _this3.route.navigate(['/']);
           });
         }
@@ -863,7 +863,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function getUsers() {
           var _this4 = this;
 
-          return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8080/users').then(function (data) {
+          return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/users').then(function (data) {
             _this4.users = data.data._embedded.users;
             console.log(_this4.users);
           });
@@ -874,7 +874,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this5 = this;
 
           if (confirm('Are you sure')) {
-            return this.http.delete('http://localhost:8080/users/' + id).subscribe(function () {
+            return this.http.delete('/users/' + id).subscribe(function () {
               return _this5.getUsers();
             });
           } else {

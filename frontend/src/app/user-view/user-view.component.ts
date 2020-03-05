@@ -17,7 +17,7 @@ export class UserViewComponent implements OnInit {
 
   getUser(id) {
     return this.http
-      .get<User>('http://localhost:8080/users/' + id).subscribe(data => {
+      .get<User>('/users/' + id).subscribe(data => {
         this.user.id = data.id;
         this.user.email = data.email;
         this.user.firstName = data.firstName;
@@ -30,12 +30,12 @@ export class UserViewComponent implements OnInit {
 
   createUser(user) {
     return this.http
-      .post<User>('http://localhost:8080/users', user).subscribe( () => this.route.navigate(['/']));
+      .post<User>('/users', user).subscribe( () => this.route.navigate(['/']));
   }
 
   updateUser(user) {
     return this.http
-      .put<User>('http://localhost:8080/users/' + user.id, user).subscribe( () => this.route.navigate(['/']));
+      .put<User>('/users/' + user.id, user).subscribe( () => this.route.navigate(['/']));
   }
 
 

@@ -20,14 +20,14 @@ export class UsersComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   getUsers() {
-    return axios.default.get('http://localhost:8080/users').then(data => {
+    return axios.default.get('/users').then(data => {
       this.users = data.data._embedded.users;
       console.log(this.users);
     });
   }
   deleteUser(id) {
     if (confirm('Are you sure')) {
-      return this.http.delete('http://localhost:8080/users/' + id).subscribe(() => this.getUsers());
+      return this.http.delete('/users/' + id).subscribe(() => this.getUsers());
     } else {
       return null;
     }
